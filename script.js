@@ -73,18 +73,26 @@ if (process.argv[2]) {
     endNum = bigNumberAdd(startNum, "1");
 }
 for (let i = startNum; bigNumberSubtract(endNum, i).includes("-") == false && bigNumberSubtract(endNum, i) != "0"; i = bigNumberAdd(i, "1")) {
+    if (i.slice(-1) % 2 == 0) {
+        console.log([i, bigNumberMultiply(i, "5").slice(0, -1), "...", "1"]);
+        continue;
+    }
     n = i
-    let HailStoneNumber = [n]
+    let HailStoneNumber = [n];
     while (n != 1) {
         if (n.slice(-1) % 2 == 0) {
             n = bigNumberMultiply(n, "5").slice(0, -1)
-            HailStoneNumber.push(n)
         }else{
             n = bigNumberAdd(bigNumberMultiply(n, "3"), "1");
         }
-        HailStoneNumber.push(n)
+        if (bigNumberSubtract(i, n).includes("-") == false && bigNumberSubtract(i, n) != "0") {
+            HailStoneNumber.push("...");
+            HailStoneNumber.push("1");
+            break;
+        }
+        HailStoneNumber.push(n);
     }
-    console.log(HailStoneNumber)
+    console.log(HailStoneNumber);
 }
 fs.writeFileSync('max', endNum);
 execSync(`git config user.name "github-actions[bot]"`);
