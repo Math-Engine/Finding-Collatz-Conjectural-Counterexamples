@@ -1,0 +1,27 @@
+name: Finding Collatz Conjectural Counterexamples
+on:
+  schedule:
+   - cron: '*/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      numFiles:
+        description: 'Number of calculations'
+        required: false
+        default: '100000'
+        type: string
+
+concurrency: 
+  group: my-workflow-group
+        
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Run script
+        run: node --max-old-space-size=4096 script.js ${{ github.event.inputs.numFiles || '100000' }}
