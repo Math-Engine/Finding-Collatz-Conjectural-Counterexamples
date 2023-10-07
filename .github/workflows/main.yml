@@ -22,8 +22,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18.x'
       - name: Run script
-        run: node --max-old-space-size=4096 script.js ${{ github.event.inputs.numFiles || '100000' }}
+        run: node script.js ${{ github.event.inputs.numFiles || '100000' }}
