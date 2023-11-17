@@ -12,9 +12,9 @@ on:
 
 run-name: Finding Collatz Conjectural Counterexamples ( ${{ github.event.inputs.numFiles || '100000' }} )
 
-concurrency: 
+concurrency:
   group: my-workflow-group
-        
+
 jobs:
   build:
     runs-on: ubuntu-latest
