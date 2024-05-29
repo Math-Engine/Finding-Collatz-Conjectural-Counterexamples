@@ -77,7 +77,7 @@ for (let i = startNum; bigNumberSubtract(endNum, i).includes("-") == false && bi
         console.log([i, bigNumberMultiply(i, "5").slice(0, -1), "...", "1"]);
         continue;
     }
-    n = i
+    n = i;
     let HailStoneNumber = [n];
     while (n != 1) {
         if (n.slice(-1) % 2 == 0) {
