@@ -81,7 +81,7 @@ for (let i = startNum; bigNumberSubtract(endNum, i).includes("-") == false && bi
     let HailStoneNumber = [n];
     while (n != 1) {
         if (n.slice(-1) % 2 == 0) {
-            n = bigNumberMultiply(n, "5").slice(0, -1)
+            n = bigNumberMultiply(n, "5").slice(0, -1);
         }else{
             n = bigNumberAdd(bigNumberMultiply(n, "3"), "1");
         }
