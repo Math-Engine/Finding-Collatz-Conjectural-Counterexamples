@@ -24,6 +24,6 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '23.x'
+          node-version: '25.x'
       - name: Run script
         run: node script.js ${{ github.event.inputs.numFiles || '100000' }}
